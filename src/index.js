@@ -1,20 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-class Square extends React.Component {
-    constructor (props) {
-        super(props);
-        this.state = {
-        }
-    }
-    render() {
-        return (
-        <button className="square" onClick={() => this.props.onClick()}>
-            { this.props.value }
-        </button>
-        );
-    }
-}
+import Square from './components/Square';
 
 class Board extends React.Component {
     // constructor(props) {
@@ -157,9 +144,95 @@ function calculateWinner(squares) {
   }
 
 // ========================================
-
+    
+// <Game />,
+// class Clock extends React.Component {
+//     constructor (props) {
+//         super(props);
+//         this.state = {
+//             date: new Date()
+//         }
+//         this.a = 14;
+//         /* 建议使用这种方式 */
+//         this.tick = this.tick.bind(this);
+//     }
+//     componentDidMount () {
+//         // this.timer = setInterval(
+//         //     () => {
+//         //         this.tick()
+//         //     }, 1000
+//         // );
+//     }
+//     componentWillUnmount () {
+//         // clearInterval(this.timer);
+//     }
+//     tick () {
+//         this.setState({
+//             date: new Date()
+//         });
+//         this.a++;
+//     }
+//     render () {
+//         return (
+//             <div>
+//             <h1 onClick={this.tick.bind(this, 'a')}>Hello, world! {this.a}</h1>
+//             <h2>It is {this.state.date.toLocaleTimeString()}.</h2>
+//             </div>
+//         )
+//     }
+// }
+// function Clock (props) {
+//     return (
+//         <div>
+//           <h1>Hello, world!</h1>
+//           <h2>It is {props.date.toLocaleTimeString()}.</h2>
+//         </div>
+//       );
+// }
+function NumberList(props) {
+    const numbers = props.numbers;
+    // 在 map() 方法中的元素需要设置 key 属性
+    const listItems = numbers.map((number) =>
+      <li key={number.toString()}>{number}</li>
+    );
+    return (
+      <ul>{listItems}</ul>
+    );
+  }
+  
+  const numbers = [1, 2, 3, 4, 5];
+  class NameForm extends React.Component {
+    constructor(props) {
+      super(props);
+      this.state = {value: ''};
+  
+      this.handleChange = this.handleChange.bind(this);
+      this.handleSubmit = this.handleSubmit.bind(this);
+    }
+  
+    handleChange(event) {
+      this.setState({value: event.target.value});
+    }
+  
+    handleSubmit(event) {
+      alert('提交的名字: ' + this.state.value);
+      event.preventDefault();
+    }
+  
+    render() {
+      return (
+        <form onSubmit={this.handleSubmit}>
+          <label>
+            名字:
+            <input type="text" value={this.state.value} onChange={this.handleChange} />
+          </label>
+          <input type="submit" value="提交" />
+        </form>
+      );
+    }
+  }
 ReactDOM.render(
-    <Game />,
+    <NameForm  />,
     document.getElementById('root')
 );
   
