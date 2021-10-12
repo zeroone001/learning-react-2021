@@ -231,8 +231,118 @@ function NumberList(props) {
       );
     }
   }
+
+/* 包含关系 
+  <FancyBorder> JSX 标签中的所有内容都会作为一个 children prop 传递给 FancyBorder 组件
+  类似于slot
+*/
+function FancyBorder(props) {
+    return (
+      <div className={'FancyBorder FancyBorder-' + props.color}>
+        {props.children}
+      </div>
+    );
+  }
+
+  class WelcomeDialog extends React.Component {
+    constructor (props) {
+      super(props);
+      this.state = {
+        count: 0
+      }
+      this.handleSomething = this.handleSomething.bind(this);
+    }
+    incrementCount () {
+      this.setState((state) => {
+        // 重要：在更新的时候读取 `state`，而不是 `this.state`。
+        return {count: state.count + 1}
+      });
+    }
+    handleSomething () {
+      // 假设 `this.state.count` 从 0 开始。
+      this.incrementCount();
+      this.incrementCount();
+      this.incrementCount();
+
+      console.log(this.state.count);
+      // 如果你现在在这里读取 `this.state.count`，它还是会为 0。
+      // 但是，当 React 重新渲染该组件时，它会变为 3。
+    }
+      render () {
+        return (
+            <FancyBorder color="blue">
+              <h1 className="Dialog-title" onClick={this.handleSomething}>
+                Welcome
+              </h1>
+              <p className="Dialog-message">
+                Thank you for visiting our spacecraft! {this.state.count}
+              </p>
+            </FancyBorder>
+          );
+      }
+  }
+  /* 
+    下面是具名的
+  */
+    // function SplitPane(props) {
+    //     return (
+    //       <div className="SplitPane">
+    //         <div className="SplitPane-left">
+    //           {props.left}
+    //         </div>
+    //         <div className="SplitPane-right">
+    //           {props.right}
+    //         </div>
+    //       </div>
+    //     );
+    //   }
+      
+    //   function App() {
+    //     return (
+    //       <SplitPane
+    //         left={
+    //           <Contacts />
+    //         }
+    //         right={
+    //           <Chat />
+    //         } />
+    //     );
+    //   }
+    const ThemeContext = React.createContext('light');
+    class App extends React.Component {
+      render() {
+        // 使用一个 Provider 来将当前的 theme 传递给以下的组件树。
+        // 无论多深，任何组件都能读取这个值。
+        // 在这个例子中，我们将 “dark” 作为当前的值传递下去。
+        const abc = {a: 1}
+        return (
+          <ThemeContext.Provider value={abc}>
+            <Toolbar />
+          </ThemeContext.Provider>
+        );
+      }
+    }
+    
+    // 中间的组件再也不必指明往下传递 theme 了。
+    function Toolbar() {
+      return (
+        <div>
+          <ThemedButton />
+        </div>
+      );
+    }
+    
+    class ThemedButton extends React.Component {
+      // 指定 contextType 读取当前的 theme context。
+      // React 会往上找到最近的 theme Provider，然后使用它的值。
+      // 在这个例子中，当前的 theme 值为 “dark”。
+      static contextType = ThemeContext;
+      render() {
+        return (<div>{this.context.a}</div>);
+      }
+    }
 ReactDOM.render(
-    <NameForm  />,
+    <App  />,
     document.getElementById('root')
 );
   
