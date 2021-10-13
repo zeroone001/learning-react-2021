@@ -26,3 +26,10 @@ import('./math').then(math => {
 })
 ```
 
+## 高阶组件
+
+
+
+## 深入 JSX
+
+实际上，JSX 仅仅只是 `React.createElement(component, props, ...children)` 函数的语法糖

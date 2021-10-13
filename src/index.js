@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { createRef } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import Square from './components/Square';
@@ -341,6 +341,8 @@ function FancyBorder(props) {
         return (<div>{this.context.a}</div>);
       }
     }
+
+// const ref = React.createRef();
 ReactDOM.render(
     <App  />,
     document.getElementById('root')
