@@ -108,7 +108,9 @@ componentWillUnmount()
 
 
 
+## AJAX and APIs
 
+在 componentDidMount 这个生命周期函数中发起 AJAX 请求。这样做你可以拿到 AJAX 请求返回的数据并通过 setState 来更新组件
 
 
 

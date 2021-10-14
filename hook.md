@@ -35,13 +35,75 @@ function Example() {
 
 
 
+## 需要清除的 effect
+
+```js
+import React, { useState, useEffect } from 'react';
+
+function FriendStatus(props) {
+  const [isOnline, setIsOnline] = useState(null);
+
+  useEffect(() => {    
+      function handleStatusChange(status) {      
+          setIsOnline(status.isOnline);    
+      }    
+      ChatAPI.subscribeToFriendStatus(props.friend.id, handleStatusChange);    
+      // Specify how to clean up after this effect:    
+      return function cleanup() {      
+          ChatAPI.unsubscribeFromFriendStatus(props.friend.id, handleStatusChange);   
+      };
+  });
+  if (isOnline === null) {
+    return 'Loading...';
+  }
+  return isOnline ? 'Online' : 'Offline';
+}
+```
 
 
 
+## useContext
 
 
 
+```js
+const themes = {
+  light: {
+    foreground: "#000000",
+    background: "#eeeeee"
+  },
+  dark: {
+    foreground: "#ffffff",
+    background: "#222222"
+  }
+};
 
+const ThemeContext = React.createContext(themes.light);
+
+function App() {
+  return (
+    <ThemeContext.Provider value={themes.dark}>
+      <Toolbar />
+    </ThemeContext.Provider>
+  );
+}
+
+function Toolbar(props) {
+  return (
+    <div>
+      <ThemedButton />
+    </div>
+  );
+}
+
+function ThemedButton() {
+  const theme = useContext(ThemeContext);  
+    return (  
+      <button style={{ background: theme.background, color: theme.foreground }}>      I am styled by theme context!   
+        </button> 
+);
+}
+```
 
 
 
