@@ -1,22 +1,23 @@
+```JSX
 import React, { createRef } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-// import Square from './components/Square';
+import Square from './components/Square';
 
-// class Board extends React.Component {
-//     // constructor(props) {
-//     //     super(props);
-//     //     this.state = {
-//     //       squares: Array(9).fill(null),
-//     //       xIsNext: true,
-//     //     };
-//     //   }
-//     renderSquare(i) {
-//         return (<Square 
-//             value={this.props.squares[i]}
-//             onClick={() => this.props.onClick(i)}
-//         />);
-//     }
+class Board extends React.Component {
+    // constructor(props) {
+    //     super(props);
+    //     this.state = {
+    //       squares: Array(9).fill(null),
+    //       xIsNext: true,
+    //     };
+    //   }
+    renderSquare(i) {
+        return (<Square 
+            value={this.props.squares[i]}
+            onClick={() => this.props.onClick(i)}
+        />);
+    }
 
 //     render() {
 //         // const status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
@@ -341,39 +342,40 @@ import './index.css';
 //       return (<div>{this.context.a}</div>);
 //     }
 //   }
-function MyContainer(props) {
-  return (
-    <div>
-      MyContainer {props.children}
-    </div>
-  );
-}
-function MyFirstComponent() {
-  return (
-    <div>
-      MyFirstComponent
-    </div>
-  );
-}
-function MySecondComponent() {
-  return (
-    <div>
-      MySecondComponent
-    </div>
-  );
-}
-class App2 extends React.Component {
-  render () {
-    return (
-      <MyContainer>
-      <MyFirstComponent />
-      <MySecondComponent />
-    </MyContainer>
-    );
-  }
-}
-// const ref = React.createRef();
+// function MyContainer(props) {
+//   return (
+//     <div>
+//       MyContainer {props.children}
+//     </div>
+//   );
+// }
+// function MyFirstComponent() {
+//   return (
+//     <div>
+//       MyFirstComponent
+//     </div>
+//   );
+// }
+// function MySecondComponent() {
+//   return (
+//     <div>
+//       MySecondComponent
+//     </div>
+//   );
+// }
+// class App2 extends React.Component {
+//   render () {
+//     return (
+//       <MyContainer>
+//       <MyFirstComponent />
+//       <MySecondComponent />
+//     </MyContainer>
+//     );
+//   }
+// }
+const ref = React.createRef();
 ReactDOM.render(
     <App2  />,
     document.getElementById('root')
 );
+```

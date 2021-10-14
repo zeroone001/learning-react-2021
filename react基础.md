@@ -62,3 +62,57 @@ class MyComponent extends React.Component {
     }
 }
 ```
+
+## dangerouslySetInnerHTML  === v-html
+
+```js
+function createMarkup() {
+  return {__html: 'First &middot; Second'};
+}
+
+function MyComponent() {
+  return <div dangerouslySetInnerHTML={createMarkup()} />;
+}
+```
+
+## 生命周期
+
+挂载
+
+```js
+constructor
+static getDerivedStateFromProps()
+render()
+componentDidMount() //
+```
+
+更新
+
+```js
+static getDerivedStateFromProps()
+shouldComponentUpdate() //
+render()
+getSnapshotBeforeUpdate()
+componentDidUpdate() // 
+```
+
+卸载
+
+```js
+componentWillUnmount()
+```
+
+## hook
+
+在不编写class的情况下，使用state等其他的特性
+
+
+
+
+
+
+
+
+
+
+
