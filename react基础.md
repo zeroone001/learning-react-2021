@@ -33,3 +33,32 @@ import('./math').then(math => {
 ## 深入 JSX
 
 实际上，JSX 仅仅只是 `React.createElement(component, props, ...children)` 函数的语法糖
+
+## 属性展开
+
+```js
+function App2 () {
+    const props = {fName: 'liu', lName: 'yongsheng'}
+    return <Greeting {...props} />
+}
+// 相当于
+function APP1 () {
+    return <Greeting fName="liu" lName="yongsheng" />
+}
+```
+
+## refs
+
+不能在函数组件上使用ref，只能在class组件上
+
+```jsx
+class MyComponent extends React.Component {
+    constructor (props) {
+        super(props);
+        this.myRef = React.createRef();
+    }
+    render () {
+        return <div ref={this.myRef}></div>
+    }
+}
+```
