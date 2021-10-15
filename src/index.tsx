@@ -1,7 +1,9 @@
 import React, { createRef, ReactElement, useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
-import './index.scss';
+// css module css in js
+import styles from './index.module.scss';
 import Robot from './bobot';
+import tsConfig from './assets/images/tsConfig.jpg';
 
 function Example () {
   const [count, setCount] = useState(0);
@@ -17,11 +19,13 @@ function Example () {
 
   return (
     <div>
-      <p>You clicked {count} times</p>
+    
+      <p className={styles.clicked} id={styles.clicked}>You clicked {count} times</p>
       <button onClick={() => setCount(count + 1)}>
         Click me
       </button>
       <Robot {..._obj} />
+      <img src={tsConfig} />
     </div>
   );
 }

@@ -1,4 +1,5 @@
 import React from 'react';
+import robotStyle from './robot.module.css';
 
 // function Bobot (props): React.FC {
 //   return (
@@ -12,8 +13,8 @@ interface RobotProps {
     name: string
 }
 const Bobot: React.FC<RobotProps> = ({ id, name }) => {
-    return <li>
+    return <div className={robotStyle.robot}>
         {id}-{name}
-    </li>
+    </div>
 }
 export default Bobot;
