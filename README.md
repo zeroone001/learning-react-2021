@@ -18,6 +18,8 @@ npm i typescript-plugin-css-modules -D
 
 目前，在事件处理函数内部的 `setState` 是异步的。
 
+setState 本身并非是异步的，但是对state的处理，给人一种异步的假象。state的处理一般发生在生命周期变化的时候
+
 ## 代码分割
 
 当 Webpack 解析到该语法时，会自动进行代码分割
