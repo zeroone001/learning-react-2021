@@ -18,7 +18,7 @@ npm i typescript-plugin-css-modules -D
 
 目前，在事件处理函数内部的 `setState` 是异步的。
 
-setState 本身并非是异步的，但是对state的处理，给人一种异步的假象。state的处理一般发生在生命周期变化的时候
+setState 本身并非是异步的，但是对state的处理，给人一种异步的假象。state的处理一般发生在生命周期变化的时候 
 
 ## 代码分割
 
@@ -123,6 +123,10 @@ componentWillUnmount()
 在 componentDidMount 这个生命周期函数中发起 AJAX 请求。这样做你可以拿到 AJAX 请求返回的数据并通过 setState 来更新组件
 
 
+
+
+
+## Context 与 useContext 【全局数据传递】
 
 
 
