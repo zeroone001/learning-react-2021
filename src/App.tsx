@@ -10,7 +10,7 @@ function App() {
 
   return (
     <div className={styles.App}>
-      <Header></Header>
+      <Header title={'这是title'}></Header>
       <Footer></Footer>
     </div>
   );

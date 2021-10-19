@@ -3,12 +3,16 @@ import { Layout, Typography, Input, Dropdown, Menu, Button } from 'antd';
 import { GlobalOutlined } from "@ant-design/icons"
 import styles from "./Header.module.css";
 
-export const Header:React.FC = () => {
+interface PropsType {
+  title: string
+}
+
+export const Header:React.FC<PropsType> = ({title}) => {
   return (
     <div className={styles['app-header']}>
         {/* top-header */}
         <div>
-          <Typography.Text>让旅游更幸福</Typography.Text>
+          <Typography.Text>让旅游更幸福{title}</Typography.Text>
           <Dropdown.Button
             style={{marginLeft: 15}}
             overlay={

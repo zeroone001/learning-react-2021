@@ -3,6 +3,7 @@
 ```shell
 npx create-react-app my-app --template typescript
 npm i typescript-plugin-css-modules --save-dev
+npm i react-router-dom --save
 ```
 
 
@@ -152,6 +153,14 @@ componentWillUnmount()
 
 
 
+## 路由与SPA
+
+`npm i react-router-dom --save`
+
+
+
+
+
 
 ## 资料
 
@@ -159,3 +168,6 @@ componentWillUnmount()
 * [create-react-app](https://www.html.cn/create-react-app/docs/folder-structure/)
 * [styled-components](https://github.com/styled-components/styled-components)
 * [ant-design](https://ant.design/index-cn)
+* [react-router](https://reactrouter.com/web/guides/quick-start)
+
+
