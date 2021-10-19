@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import { UpdateAppContext } from "../AppState";
+import { UpdateAppContext } from "../../AppState";
 
 /* 高阶函数 */
 export const withAddHoc = (ChildComponents: React.ComponentType) => {

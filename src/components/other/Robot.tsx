@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import robotStyle from "./robot.module.css";
-import { AppContext } from "../AppState";
+import { AppContext } from "../../AppState";
 import { UseAddtoCart } from "./AddHoc";
 // function Bobot (props): React.FC {
 //   return (
