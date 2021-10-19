@@ -126,7 +126,21 @@ componentWillUnmount()
 
 
 
-## Context 与 useContext 【全局数据传递】
+## Context 与 useContext 【全局数据传递】】
+
+
+
+
+## 高阶组件 HOC
+
+高阶组件是，参数是组件，返回值是新组件的函数
+
+不是react的API，而是一种设计模式
+
+1. 抽取重复的代码，实现组件的复用
+2. 条件渲染，控制组件的渲染逻辑（渲染劫持）
+
+
 
 
 
