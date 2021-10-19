@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import robotStyle from "./robot.module.css";
-import { AppContext, UpdateAppContext } from "../AppState";
+import { AppContext } from "../AppState";
+import { UseAddtoCart } from "./AddHoc";
 // function Bobot (props): React.FC {
 //   return (
 //     <div>
@@ -25,20 +26,10 @@ const Bobot: React.FC<RobotProps> = ({ id, name }) => {
   //     </AppContext.Consumer>
   //   );
   const value = useContext(AppContext);
-  const setValue = useContext(UpdateAppContext);
-  const clickEvent = () => {
-    if (setValue) {
-      setValue((state) => {
-        return {
-          ...state,
-          username: "zxcvxxxxx",
-        };
-      });
-    }
-  };
+  const clickEvent = UseAddtoCart();
   return (
-    <div className={robotStyle.robot} onClick={clickEvent}>
-      {id}-{name}={value.username}, {value.age}
+    <div className={robotStyle.robot} onClick={() => clickEvent()}>
+      RobotComponent--- {id}-{name}={value.username}, {value.age}
     </div>
   );
 };

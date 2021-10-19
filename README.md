@@ -1,6 +1,10 @@
 # react
 
-npx create-react-app my-app
+```shell
+npx create-react-app my-app --template typescript
+npm i typescript-plugin-css-modules --save-dev
+```
+
 
 ## css
 
@@ -141,8 +145,10 @@ componentWillUnmount()
 2. 条件渲染，控制组件的渲染逻辑（渲染劫持）
 
 
+## 自定义hook
 
 
+自定义hook是一个函数，其名称是以use开头，函数内部可以调用其他的HOOK
 
 
 
@@ -152,3 +158,4 @@ componentWillUnmount()
 * [官网](https://zh-hans.reactjs.org/docs/hello-world.html)
 * [create-react-app](https://www.html.cn/create-react-app/docs/folder-structure/)
 * [styled-components](https://github.com/styled-components/styled-components)
+* [ant-design](https://ant.design/index-cn)
