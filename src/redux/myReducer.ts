@@ -1,5 +1,5 @@
 
-interface MyState {
+export interface MyState {
     language: string
 }
 

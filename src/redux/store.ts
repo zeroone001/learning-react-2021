@@ -3,5 +3,5 @@ import myReducer from './myReducer';
 
 const store = createStore(myReducer);
 
-export default store;
+export default store; 
 

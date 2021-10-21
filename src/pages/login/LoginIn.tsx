@@ -1,11 +1,13 @@
 import React from "react";
 import { InnerLogin } from './InnerLogin';
-import { userSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { MyState } from '../../redux/myReducer';
 
 export const LoginIn: React.FC = () => {
-  const language = userSelector((state) => state.language)
+  const language = useSelector<MyState>((state) => state.language)
   return (
   <div>
+    这是， {language}
     <InnerLogin title={'点击我'}></InnerLogin>
   </div>);
 };

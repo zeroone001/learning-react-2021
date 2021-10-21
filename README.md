@@ -158,9 +158,57 @@ componentWillUnmount()
 `npm i react-router-dom --save`
 
 
+## redux
+
+```shell
+npm i redux --save
+npm i react-redux --save
+npm install @reduxjs/toolkit
+npm install --save-dev redux-devtools
+npm i redux-thunk --save
+```
+
+react-redux: 是官方软件包，它允许您的React组件通过读取状态片段和调度操作来更新存储，从而与Redux存储交互。
 
 
+reducer 小例子
 
+```js
+const initState = {
+    value: 0
+};
+
+function counterReducer (state = initState, action) {
+    if (action.type === 'counter/increment') {
+        return {
+            ...state,
+            value: state.value + 1
+        }
+    }
+    return state;
+}
+```
+
+dispatch
+
+```js
+// 触发一个事件
+store.dispatch({type: 'counter/increment'});
+// 一般写成一个函数
+const increment = () => {
+  return {
+    type: 'counter/increment'
+  }
+}
+
+store.dispatch(increment())
+
+console.log(store.getState())
+```
+
+selector
+
+Selector 函数可以从 store 状态树中提取指定的片段。随着应用变得越来越大，会遇到应用程序的不同部分需要读取相同的数据，selector 可以避免重复这样的读取逻辑
 
 ## 资料
 
