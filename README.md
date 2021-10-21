@@ -169,5 +169,6 @@ componentWillUnmount()
 * [styled-components](https://github.com/styled-components/styled-components)
 * [ant-design](https://ant.design/index-cn)
 * [react-router](https://reactrouter.com/web/guides/quick-start)
+* [redux 中文网](http://cn.redux.js.org/)
 
 
