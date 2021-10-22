@@ -2,7 +2,7 @@ import React, { createRef, ReactElement, useState, useEffect } from "react";
 // css module css in js
 import styles from "./HomePage.module.css";
 import { Header, Footer } from '../../components';
-import {RouteComponentProps, useLocation} from 'react-router-dom';
+import { RouteComponentProps, useLocation } from 'react-router-dom';
 
 interface PropsParams {
   abc: string
