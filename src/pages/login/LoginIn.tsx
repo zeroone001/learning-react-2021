@@ -2,7 +2,7 @@ import React from "react";
 import { InnerLogin } from "./InnerLogin";
 import { useDispatch } from "react-redux";
 import { useSelector } from "../../redux/useSelector";
-import {changeLan} from '../../redux/configureStore';
+import { changeLan } from '../../redux/configureStore';
 
 export const LoginIn: React.FC = () => {
   const language = useSelector((state) => state.language);
