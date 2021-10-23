@@ -1,4 +1,4 @@
-import { createStore } from 'redux';
+import { createStore, bindActionCreators } from 'redux';
 import myReducer from './myReducer';
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { LanguageSlice } from "./configureStore";

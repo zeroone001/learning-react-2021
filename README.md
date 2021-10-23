@@ -47,7 +47,16 @@ import('./math').then(math => {
 
 ## 深入 JSX
 
+JSX 的本质就是，动态创建组件的语法糖
+
 实际上，JSX 仅仅只是 `React.createElement(component, props, ...children)` 函数的语法糖
+
+
+JSX本身也是表达式
+
+`const element = <h1>hello world</h1>;`
+
+
 
 ## 属性展开
 
@@ -131,7 +140,29 @@ componentWillUnmount()
 
 
 
-## Context 与 useContext 【全局数据传递】】
+## Context API  与 useContext 【全局数据传递】】
+
+```jsx
+const color = {
+    dark: "1",
+    light: '2'
+}
+const ThemContext = React.createContext(color)
+
+function App () {
+    return (
+        <ThemContext.Provider value={color}></ThemContext.Provider>
+    )
+}
+
+function App3 () {
+    const color = useContext(ThemeContext);
+    return (
+    	<div>{color.dark}</div>
+    )
+}
+
+```
 
 
 
@@ -145,7 +176,13 @@ componentWillUnmount()
 1. 抽取重复的代码，实现组件的复用
 2. 条件渲染，控制组件的渲染逻辑（渲染劫持）
 
+`const EnhancedComponent = HocComponent(wrappedCpmponent);`
 
+
+## 设计模式
+
+* 高阶组件 HOC
+* 函数子组件 `this.props.children(value)`
 ## 自定义hook
 
 
@@ -153,10 +190,15 @@ componentWillUnmount()
 
 
 
-## 路由与SPA
+## react-router 路由 与 SPA
 
 `npm i react-router-dom --save`
 
+为什么需要路由？
+
+1. 单页应用也需要页面切换
+2. 通过URL可以定位到页面
+3. 更有语义的组织资源
 
 ## redux
 
@@ -242,6 +284,16 @@ const actionLog: Middleware = (store) => (next) => (action) => {}
 
 
 
+## 不可变数据 immutable data
+
+如何操作不可变数据
+
+* {...}
+* `Object.assign()`
+* immer, redux-toolkit里面就用到了immer
+
+
+
 ## 资料
 
 * [官网](https://zh-hans.reactjs.org/docs/hello-world.html)
@@ -251,4 +303,4 @@ const actionLog: Middleware = (store) => (next) => (action) => {}
 * [react-router](https://reactrouter.com/web/guides/quick-start)
 * [redux 中文网](http://cn.redux.js.org/)
 * [redux-toolkit.js](https://redux-toolkit.js.org/usage/usage-guide)
-
+* [新的react官网](https://beta.reactjs.org/learn)
