@@ -10,8 +10,8 @@ npm i react-router-dom --save
 ## css
 
 1. 直接引入css文件 `import './style.css'` ; 可能会造成CSS的全局污染和冲突
-2. css in js 模块化引入组件 `import style from './index.css'`； 麻烦一点
-npm i typescript-plugin-css-modules -D
+2. css in js 模块化引入组件 `import style from './index.css'`； 麻烦一点 `npm i typescript-plugin-css-modules -D`
+
 
 
  ## 给 `setState` 传递一个对象与传递一个函数的区别是什么？
@@ -236,6 +236,10 @@ const actionLog: Middleware = (store) => (next) => (action) => {}
 ## redux-toolkit
 
 这个依赖里面包含了 `redux , redux-thunk`
+
+
+### 异步 redux-toolkit
+
 
 
 ## 资料

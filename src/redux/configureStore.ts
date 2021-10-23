@@ -13,33 +13,42 @@
   
 //     return store
 // }
-import { configureStore, createSlice } from '@reduxjs/toolkit';
+import { configureStore, createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 // import rootReducer from './myReducer';
 
 interface LanguageType {
     language: string
 }
 
+/* 处理异步 createAsyncThunk */
+// export const getAsyncLanguage = createAsyncThunk(
+//     "l/getLanguage",
+//     async (userId, thunkAPI) => {
+//         const response = await userAPI.fetchById(userId)
+//         return response.data
+//     }
+// );
+
+
+
+
 const initialState = {
     language: '中文'
 } as LanguageType;
 
-const LanguageSlice = createSlice({
+/* 创建reducer  */
+export const LanguageSlice = createSlice({
     name: 'l',
     initialState,
     reducers: {
         changeLan(state, action) {
             state.language = action.payload;
         }
+    },
+    extraReducers: {
+
     }
 })
+// 把这个action方法导出去
+export const { changeLan } = LanguageSlice.actions;
 
-export const {changeLan} = LanguageSlice.actions;
-
-
-const store = configureStore({
-    reducer: LanguageSlice.reducer,
-    devTools: true
-});
-
-export default store;
