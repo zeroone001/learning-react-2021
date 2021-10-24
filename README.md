@@ -198,7 +198,23 @@ function App3 () {
 
 1. 单页应用也需要页面切换
 2. 通过URL可以定位到页面
-3. 更有语义的组织资源
+3. 更有语义的组织资源 
+
+三种路由实现方式
+
+1. URL路由
+2. hash路由
+3. 内存路由
+
+```html
+
+<Link to="/fap" />
+
+<NavLink to="/faq" activeClassName="selected " />
+
+
+```
+
 
 ## redux
 

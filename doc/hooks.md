@@ -106,6 +106,44 @@ function ThemedButton() {
 ```
 
 
+## 优点
+
+带来的最大好处，逻辑复用； 简化了逻辑的复用；有助于关注分离
+
+高阶组件HOC的缺点：
+
+1. 代码难理解，不直观，很多人宁愿重复代码，也不愿意去用高阶组件
+2. 会增加很多额外的组件节点。给调试带来很大的负担。
 
 
+ ## Hooks
 
+`useState、useEffect、useCallback、useMemo、 useRef、useContext`
+
+
+### useEffect
+
+```js
+const [size, setSize] = useState({}); useEffect(() => {
+// 窗口大小变化事件处理函数 
+const handler = () => {
+   setSize(getSize());
+};
+// 监听 resize 事件 
+window.addEventListener('resize', handler);
+// 返回一个 callback 在组件销毁时调用
+ return () => {
+    // 移除 resize 事件
+    window.removeEventListener('resize', handler); 
+  };
+}, []);
+```
+
+## 规则
+
+1. 所有的hook必须要被执行到
+2. 必须按照顺序执行
+
+## eslint-plugin-react-hooks 
+
+检查hooks是否正确使用
