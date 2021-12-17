@@ -85,6 +85,9 @@ export default combineReducers({
 
 ## 异步 Action
 
+异步 Action 并不是一个具体的概念，而可以把它看作是 Redux 的一个使用模式
+
+
 ```js
 import { createStore, applyMiddleware } from 'redux' 
 import thunkMiddleware from 'redux-thunk'
@@ -98,11 +101,12 @@ const store = createStore(rootReducer, composedEnhancer);
 function fetchData() {
     return dispatch => {
         	dispatch({ type: 'FETCH_DATA_BEGIN' }); 
-        fetch('/some-url').then(res => {
-        	dispatch({ type: 'FETCH_DATA_SUCCESS', data: res });
-        }).catch(err => {
-        	dispatch({ type: 'FETCH_DATA_FAILURE', error: err }); 
-        })
+
+            fetch('/some-url').then(res => {
+                dispatch({ type: 'FETCH_DATA_SUCCESS', data: res });
+            }).catch(err => {
+                dispatch({ type: 'FETCH_DATA_FAILURE', error: err }); 
+            })
     }
 }
 
@@ -119,4 +123,35 @@ function DataList() {
 }
 ```
 
-异步 Action 并不是一个具体的概念，而可以把它看作是 Redux 的一个使用模式
+
+## 用 Redux 写一个计数器
+
+```js
+const INCREMENT = 'INCREMENT'; // 为 increment action types 定义一个常量
+const DECREMENT = 'DECREMENT'; // 为 decrement action types 定义一个常量
+
+const counterReducer = (state = 0, action) => {
+switch (action.type) {
+    case 'INCREMENT':
+      return state + 1
+    case 'DECREMENT':
+      return state - 1
+    default:
+      return state
+  }
+}; // 定义 counter reducer，根据接收到的动作递增或递减 state
+
+const incAction = () => {
+  return {
+    type: INCREMENT
+  }
+}; // 为自增运算定义一个动作创建器
+
+const decAction = () => {
+  return {
+    type: DECREMENT
+  }
+}; // 为自减运算定义一个动作创建器
+
+const store = Redux.createStore(counterReducer); // 在这里定义 Redux store，传入 reducers
+```
