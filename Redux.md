@@ -1,10 +1,87 @@
 # Redux
 
+Redux store 是应用程序状态的唯一真实来源
+
 ## 三个基本概念
 
 * State 也就是store， 一般是一个纯JS object
 * Action 也是一个Object，用于描述发生的动作
 * Reducer 则是一个函数，接收state，和 Action，作为参数，通过计算得到新的state
+
+## action
+
+要想更新 state， 需要发起一个action
+
+action： 
+
+```js
+{ type: 'ADD_TODO', text: 'Go to swimming pool' }
+{ type: 'TOGGLE_TODO', index: 1 }
+{ type: 'SET_VISIBILITY_FILTER', filter: 'SHOW_ALL' }
+```
+
+## subscribe 订阅器
+
+添加一个变化监听器。每当 dispatch action 的时候就会执行
+
+```js
+function select(state) {
+  return state.some.deep.property
+}
+
+let currentValue
+function handleChange() {
+  let previousValue = currentValue
+  currentValue = select(store.getState())
+
+  if (previousValue !== currentValue) {
+    console.log(
+      'Some deep nested property changed from',
+      previousValue,
+      'to',
+      currentValue
+    )
+  }
+}
+
+const unsubscribe = store.subscribe(handleChange)
+unsubscribe()
+```
+
+## combineReducers
+
+随着应用变得越来越复杂，可以考虑将 reducer 函数 拆分成多个单独的函数，
+拆分后的每个函数负责独立管理 state 的一部分。
+
+```js
+export default function todos(state = [], action) {
+  switch (action.type) {
+    case 'ADD_TODO':
+      return state.concat([action.text])
+    default:
+      return state
+  }
+}
+export default function counter(state = 0, action) {
+  switch (action.type) {
+    case 'INCREMENT':
+      return state + 1
+    case 'DECREMENT':
+      return state - 1
+    default:
+      return state
+  }
+}
+import { combineReducers } from 'redux'
+import todos from './todos'
+import counter from './counter'
+
+export default combineReducers({
+  todos,
+  counter
+})
+```
+
 
 ## 异步 Action
 
