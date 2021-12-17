@@ -2,8 +2,6 @@
 
 ## 三个基本概念
 
-
-
 * State 也就是store， 一般是一个纯JS object
 * Action 也是一个Object，用于描述发生的动作
 * Reducer 则是一个函数，接收state，和 Action，作为参数，通过计算得到新的state
