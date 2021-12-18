@@ -105,7 +105,7 @@ const store = createStore(rootReducer, composedEnhancer);
 
 
 function fetchData() {
-    return dispatch => {
+    return (dispatch, getState) => {
         dispatch({ type: 'FETCH_DATA_BEGIN' }); 
         fetch('/some-url').then(res => {
             dispatch({ type: 'FETCH_DATA_SUCCESS', data: res });
@@ -115,16 +115,13 @@ function fetchData() {
     }
 }
 
-
-
-
 import fetchData from './fetchData';
 import { useDispatch } from 'react-redux';
 
 function DataList() {
-	const dispatch = useDispatch();
-	// dispatch 了一个函数由 redux-thunk 中间件去执行 
-    dispatch(fetchData());
+  const dispatch = useDispatch();
+  // dispatch 了一个函数由 redux-thunk 中间件去执行 
+  dispatch(fetchData());
 }
 ```
 ### 两点需要注意
@@ -151,6 +148,38 @@ const store = createStore(
   applyMiddleware(thunk, promise, logger)
 );
 ```
+
+### applyMiddlewares
+
+它是 Redux 的原生方法，作用是将所有中间件组成一个数组，依次执行。
+
+所有中间件被放进了一个数组chain，然后嵌套执行，最后执行store.dispatch。
+可以看到，中间件内部（middlewareAPI）可以拿到getState和dispatch这两个方法
+
+也就是说强化了dispatch
+
+### 异步操作的基本思路
+
+同步操作只需要发出一个action，异步操作的差别是发出三种action
+
+操作发起时的 Action
+操作成功时的 Action
+操作失败时的 Action
+
+以向服务器取出数据为例，三种 Action 可以有两种不同的写法。
+
+```js
+// 写法一：名称相同，参数不同
+{ type: 'FETCH_POSTS' }
+{ type: 'FETCH_POSTS', status: 'error', error: 'Oops' }
+{ type: 'FETCH_POSTS', status: 'success', response: { ... } }
+
+// 写法二：名称不同
+{ type: 'FETCH_POSTS_REQUEST' }
+{ type: 'FETCH_POSTS_FAILURE', error: 'Oops' }
+{ type: 'FETCH_POSTS_SUCCESS', response: { ... } }
+```
+
 
 ## 用 Redux 写一个计数器
 
@@ -212,4 +241,8 @@ function counter(state = { count: 0 }, action) {
   }
 }
 ```
+
+## 参考资料
+
+* [Redux 入门教程（二）：中间件与异步操作](https://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_two_async_operations.html)
 

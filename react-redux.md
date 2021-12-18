@@ -1,6 +1,62 @@
 # react-redux
 
-## connect
+## hooks 
+
+Using Hooks in a React Redux App​
+
+官方文档： https://react-redux.js.org/api/hooks#usestore
+
+### useSelector
+
+```js
+import React from 'react'
+import { useSelector } from 'react-redux'
+
+export const CounterComponent = () => {
+  const counter = useSelector((state) => state.counter)
+  return <div>{counter}</div>
+}
+```
+
+### useDispatch
+
+```js
+import React from 'react'
+import { useDispatch } from 'react-redux'
+
+export const CounterComponent = ({ value }) => {
+  const dispatch = useDispatch()
+
+  return (
+    <div>
+      <span>{value}</span>
+      <button onClick={() => dispatch({ type: 'increment-counter' })}>
+        Increment counter
+      </button>
+    </div>
+  )
+}
+```
+
+### useStore
+
+```js
+import React from 'react'
+import { useStore } from 'react-redux'
+
+export const CounterComponent = ({ value }) => {
+  const store = useStore()
+
+  // EXAMPLE ONLY! Do not do this in a real app.
+  // The component will not automatically update if the store state changes
+  return <div>{store.getState()}</div>
+}
+```
+
+
+## connect 
+
+不建议使用connect了，换成hooks了，比如 useSelector()， useDispatch(), useStore()
 
 为了方便使用，Redux 的作者封装了一个 React 专用的库 React-Redux
 
