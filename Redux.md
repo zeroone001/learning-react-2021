@@ -8,6 +8,12 @@ Redux store 是应用程序状态的唯一真实来源
 * Action 也是一个Object，用于描述发生的动作
 * Reducer 则是一个函数，接收state，和 Action，作为参数，通过计算得到新的state
 
+## Redux 的设计思想很简单，就两句话
+
+* Web 应用是一个状态机，视图与状态是一一对应的
+* 所有的状态，保存在一个对象里面。
+
+
 ## action
 
 要想更新 state， 需要发起一个action
@@ -121,7 +127,30 @@ function DataList() {
     dispatch(fetchData());
 }
 ```
+### 两点需要注意
 
+1. createStore方法可以接受整个应用的初始状态作为参数，那样的话，applyMiddleware就是第三个参数了。
+
+initial_state 为初始state
+
+```js
+const store = createStore(
+  reducer,
+  initial_state,
+  applyMiddleware(logger)
+);
+```
+
+2. 中间件的次序有讲究。
+
+上面代码中，applyMiddleware方法的三个参数，就是三个中间件。有的中间件有次序要求，使用前要查一下文档。比如，logger就一定要放在最后，否则输出结果会不正确
+
+```js
+const store = createStore(
+  reducer,
+  applyMiddleware(thunk, promise, logger)
+);
+```
 
 ## 用 Redux 写一个计数器
 
@@ -169,5 +198,18 @@ import { Provider } from 'react-redux'
 </Provider>
 ```
 
+## 定义 reducer
 
+```js
+// Reducer
+function counter(state = { count: 0 }, action) {
+  const count = state.count
+  switch (action.type) {
+    case 'increase':
+      return { count: count + 1 }
+    default:
+      return state
+  }
+}
+```
 
