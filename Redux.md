@@ -100,13 +100,12 @@ const store = createStore(rootReducer, composedEnhancer);
 
 function fetchData() {
     return dispatch => {
-        	dispatch({ type: 'FETCH_DATA_BEGIN' }); 
-
-            fetch('/some-url').then(res => {
-                dispatch({ type: 'FETCH_DATA_SUCCESS', data: res });
-            }).catch(err => {
-                dispatch({ type: 'FETCH_DATA_FAILURE', error: err }); 
-            })
+        dispatch({ type: 'FETCH_DATA_BEGIN' }); 
+        fetch('/some-url').then(res => {
+            dispatch({ type: 'FETCH_DATA_SUCCESS', data: res });
+        }).catch(err => {
+            dispatch({ type: 'FETCH_DATA_FAILURE', error: err }); 
+        })
     }
 }
 
@@ -154,4 +153,18 @@ const decAction = () => {
 }; // 为自减运算定义一个动作创建器
 
 const store = Redux.createStore(counterReducer); // 在这里定义 Redux store，传入 reducers
+```
+
+## 使用 Provider 连接react和redux
+
+Provider是 React Redux 包装 React 应用的 wrapper 组件， 
+它允许访问整个组件树中的 Redux store 及 dispatch（分发）方法。 
+Provider 需要两个 props：Redux store 和 App 应用的子组件
+
+```js
+import { Provider } from 'react-redux'
+
+<Provider store={store}>
+  <App/>
+</Provider>
 ```

@@ -355,6 +355,18 @@ const actionLog: Middleware = (store) => (next) => (action) => {}
 
 
 
+
+# 复杂状态处理
+
+
+## 原则一， 保证状态最小化
+
+
+**在保证 State 完整性的同时，也要保证它的最小 化**
+
+
+## 原则二，避免中间状态，确保唯一数据源
+
 ## 资料
 
 * [官网](https://zh-hans.reactjs.org/docs/hello-world.html)
