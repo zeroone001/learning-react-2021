@@ -41,6 +41,49 @@ import('./math').then(math => {
 })
 ```
 
+## 基础class
+
+```js
+class DisplayMessages extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      input: '',
+      messages: []
+    }
+    this.handleChange = this.handleChange.bind(this);
+    this.submitMessage = this.submitMessage.bind(this);
+  }
+  // 在这里添加 handleChange() 和 submitMessage() 方法
+  handleChange (e) {
+      this.setState({
+        input: e.target.value
+    });
+  }
+  submitMessage = () => {
+    this.setState({
+      messages: [...this.state.messages, this.state.input],
+      input: '',
+    })
+  }
+  render() {
+    return (
+      <div>
+        <h2>Type in a new Message:</h2>
+        { /* 在这一行下面渲染一个输入框（input），按钮（button）和列表（ul） */ }
+        <input onChange={this.handleChange} type="text" value={this.state.input} />
+        <button onClick={this.submitMessage}>添加</button>
+        <ul>
+          {this.state.messages.map((item) => {
+            return <li>{item}</li>
+          })}
+        </ul>
+        { /* 修改这行上面的代码 */ }
+      </div>
+    );
+  }
+};
+```
 ## 高阶组件
 
 
@@ -307,6 +350,8 @@ const actionLog: Middleware = (store) => (next) => (action) => {}
 * {...}
 * `Object.assign()`
 * immer, redux-toolkit里面就用到了immer
+
+## class
 
 
 
